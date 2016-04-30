@@ -23,7 +23,7 @@ android {
         }
     }
     buildTypes.each {
-        it.buildConfigField "String","MOVIESDB_API_KEY", "\"2fdd50a64976cf6af09cc7c006953065\""
+        it.buildConfigField "String","MOVIESDB_API_KEY", "\"APIkey\""
     }
 }
 
@@ -32,4 +32,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:19.1.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.android.support:recyclerview-v7:+'
 }

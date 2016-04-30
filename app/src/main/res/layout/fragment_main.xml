@@ -3,14 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context="com.example.bharath.moviesapp.MainActivityFragment">
+    tools:context=".MovieListFragment">
 
-    <GridView
-        android:id="@+id/gridview_flavor"
+    <com.example.bharath.moviesapp.customview.AutofitRecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="auto_fit"
-        android:gravity="center"
-        />
+        android:padding="@dimen/item_margin"
+        android:columnWidth="@dimen/column_width"
+        android:clipToPadding="false"/>
 
 </RelativeLayout>

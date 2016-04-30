@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout  android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/movietitle"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#33ccff"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+
+        <ImageView
+            android:id="@+id/moviethumbnail"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/imageplaceholder"
+            android:layout_below="@id/movietitle"
+            android:layout_margin="10dp"
+            android:layout_marginRight="1dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop" />
+
+
+        <TextView
+            android:id="@+id/moviedate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/movietitle"
+            android:layout_margin="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@id/moviethumbnail"
+            android:padding="5dp"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/userrating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/moviedate"
+            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/moviethumbnail"
+            android:textSize="30sp" />
+
+
+        <TextView
+            android:id="@+id/movieOverview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/moviethumbnail"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="15dp" />
+
+
+    </RelativeLayout>
+</ScrollView>
