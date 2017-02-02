@@ -1,73 +1,65 @@
 package com.example.bharath.moviesapp;
 
-import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
-import android.view.LayoutInflater;
-import android.view.Menu;
+import android.support.v7.widget.Toolbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.example.bharath.moviesapp.MovieListActivity;
+import com.example.bharath.moviesapp.R;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
- * Created by Bharath on 4/24/2016.
+ * An activity representing a single Movie detail screen. This
+ * activity is only used narrow width devices. On tablet-size devices,
+ * item details are presented side-by-side with a list of items
+ * in a {@link MovieListActivity}.
  */
-public class MovieDetailActivity  extends ActionBarActivity {
+public class MovieDetailActivity extends AppCompatActivity {
+
+    @Bind(R.id.detail_toolbar)
+    Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.movie_detail);
+        setContentView(R.layout.activity_movie_detail);
+        ButterKnife.bind(this);
 
+        setSupportActionBar(mToolbar);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         if (savedInstanceState == null) {
-
-            Intent intent = getIntent();
-
             Bundle arguments = new Bundle();
-
-            arguments.putParcelable("moviedata", (MovieFlavor)getIntent().getParcelableExtra("moviedata"));
-
+            arguments.putParcelable(MovieDetailFragment.ARG_MOVIE,
+                    getIntent().getParcelableExtra(MovieDetailFragment.ARG_MOVIE));
             MovieDetailFragment fragment = new MovieDetailFragment();
             fragment.setArguments(arguments);
-
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, fragment)
+                    .add(R.id.movie_detail_container, fragment)
                     .commit();
         }
     }
 
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.moviedetail, menu);
-        return true;
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            startActivity(new Intent(this,SettingsActivity.class));
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
-
-
 }
-

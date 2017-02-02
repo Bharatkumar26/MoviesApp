@@ -7,11 +7,13 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:name="MovieListActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,21 +21,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_setting"
-            android:parentActivityName=".MainActivity">
+            android:name="MovieDetailActivity"
+            android:label="@string/title_movie_detail"
+            android:parentActivityName=".MovieListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.bharath.moviesapp.MainActivity" />
+                android:value="com.example.bharath.moviesapp.MovieListActivity" />
         </activity>
-        <activity
-            android:name=".MovieDetailActivity"
-            android:label="@string/title_activity_detail"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.bharath.moviesapp.MainActivity" />
-        </activity>
-    </application>
 
+        <provider
+            android:name=".data.MoviesProvider"
+            android:authorities="com.example.bharath.moviesapp" />
+    </application>
 </manifest>
